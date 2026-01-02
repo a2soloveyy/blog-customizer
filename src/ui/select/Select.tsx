@@ -50,11 +50,9 @@ export const Select = (props: SelectProps) => {
 	return (
 		<div className={styles.container}>
 			{title && (
-				<>
-					<Text size={12} weight={800} uppercase>
-						{title}
-					</Text>
-				</>
+				<Text size={12} weight={800} uppercase>
+					{title}
+				</Text>
 			)}
 			<div
 				className={styles.selectWrapper}
@@ -67,7 +65,6 @@ export const Select = (props: SelectProps) => {
 						styles.placeholder,
 						(styles as Record<string, string>)[optionClassName]
 					)}
-					data-status={status}
 					data-selected={!!selected?.value}
 					onClick={handlePlaceHolderClick}
 					role='button'
