@@ -21,8 +21,12 @@ jobs:
       run: set -eu && git clone https://github.com/Yandex-Practicum/tests-blog-customizer.git /tmp/tests-blog-customizer
     - name: Установка браузеров для тестов
       run: |
-        cd /tmp/tests-blog-customizer
-        npx playwright install chromium
+          # Переходим в папку с тестовым проектом
+          cd /tmp/tests-blog-customizer
+          # Устанавливаем все зависимости проекта (включая @playwright/test)
+          npm install
+          # Устанавливаем браузер Chromium вместе с системными зависимостями
+          npx playwright install --with-deps chromium
     - name: Run tests
       run: bash /tmp/tests-blog-customizer/run.sh
     - uses: actions/upload-artifact@v4
