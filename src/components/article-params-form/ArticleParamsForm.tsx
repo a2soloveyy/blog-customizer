@@ -101,9 +101,8 @@ export const ArticleParamsForm = ({
 		(e: React.FormEvent) => {
 			e.preventDefault();
 			onApply(formState);
-			handleClose();
 		},
-		[formState, onApply, handleClose]
+		[formState, onApply]
 	);
 
 	const handleResetForm = useCallback(
@@ -111,9 +110,8 @@ export const ArticleParamsForm = ({
 			e.preventDefault();
 			setFormState(defaultArticleState);
 			onReset();
-			handleClose();
 		},
-		[onReset, handleClose]
+		[onReset]
 	);
 
 	return (
