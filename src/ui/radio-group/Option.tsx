@@ -24,14 +24,14 @@ export const Option = (props: OptionProps) => {
 	useEnterSubmit({ onChange, option });
 
 	const inputId = `${groupName}_radio_item_with_value__${value}`;
-	const isChecked = value === selected.title;
+	const isChecked = value === selected.value;
 
 	return (
 		<div
 			className={styles.item}
 			key={value}
 			data-checked={isChecked}
-			data-testid={inputId}
+			data-testid={`radio_radio_item_with_value__${value}`}
 			tabIndex={0}
 			ref={optionRef}>
 			<input
