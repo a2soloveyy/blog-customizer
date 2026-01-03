@@ -13,7 +13,7 @@ import {
 	backgroundColors,
 	contentWidthArr,
 } from 'src/constants/articleProps';
-import { useOutsideClick } from 'src/hooks/useOutsideClick';
+import { useOutsideClick } from 'src/ui/radio-group/hooks/useOutsideClick';
 
 import styles from './ArticleParamsForm.module.scss';
 
@@ -31,8 +31,8 @@ export const ArticleParamsForm = ({
 	const [isOpen, setIsOpen] = useState(false);
 	const [formState, setFormState] = useState<ArticleStateType>(currentState);
 	const asideRef = useRef<HTMLElement>(null);
+	const arrowRef = useRef<HTMLDivElement>(null);
 
-	// Обновляем форму при изменении currentState извне
 	useEffect(() => {
 		setFormState(currentState);
 	}, [currentState]);
@@ -45,7 +45,7 @@ export const ArticleParamsForm = ({
 		setIsOpen(false);
 	}, []);
 
-	useOutsideClick(asideRef, handleClose);
+	useOutsideClick([asideRef, arrowRef], handleClose);
 
 	const handleFontFamilyChange = useCallback(
 		(option: (typeof fontFamilyOptions)[0]) => {
@@ -118,7 +118,7 @@ export const ArticleParamsForm = ({
 
 	return (
 		<>
-			<ArrowButton isOpen={isOpen} onClick={handleToggle} />
+			<ArrowButton ref={arrowRef} isOpen={isOpen} onClick={handleToggle} />
 			<aside
 				ref={asideRef}
 				className={`${styles.container} ${
